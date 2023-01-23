@@ -1,15 +1,17 @@
-import express, { Request, Response, NextFunction } from "express";
+require('dotenv').config();
+
+import express, { Request, Response, NextFunction } from 'express';
 
 const app = express();
 
-const port = 8080;
+const port = process.env.PORT || 8081;
 
-app.get("/welcome", (req: Request, res: Response, next: NextFunction) => {
-  res.send("welcome!");
+app.get('/welcome', (req: Request, res: Response, next: NextFunction) => {
+   res.send('welcome!');
 });
 
 app.listen(port, () => {
-  console.log(`
+   console.log(`
   ################################################
   🛡️  Server running on port: ${port}
   ################################################
