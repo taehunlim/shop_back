@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./_middleware/db');
 
 import express, { Request, Response, NextFunction } from 'express';
 
@@ -6,7 +7,7 @@ const productController = require('./_product/product.controller');
 
 const app = express();
 
-require('./_middleware/db');
+app.use(express.json());
 
 const port = process.env.PORT || 8081;
 

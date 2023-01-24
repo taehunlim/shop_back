@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const db = process.env.MONGO_DB;
+const db = process.env.MONGO_DB as string;
 const options = {
    useNewUrlParser: true,
    useUnifiedTopology: true,
@@ -8,7 +8,7 @@ const options = {
 
 mongoose
    .set('strictQuery', false)
-   .connect(db, options)
+   .connect(db)
    .then(() => console.log('mongoDB connected'))
    .catch((err: Error) => {
       console.log(err);
