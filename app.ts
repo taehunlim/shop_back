@@ -6,6 +6,8 @@ const productController = require('./_product/product.controller');
 
 const app = express();
 
+require('./_middleware/db');
+
 const port = process.env.PORT || 8081;
 
 app.get('/welcome', (req: Request, res: Response, next: NextFunction) => {
