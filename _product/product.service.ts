@@ -5,6 +5,13 @@ async function getProduct(): Promise<Product[]> {
    return product.map((p) => p);
 }
 
+async function getProductDetail({ productId }: { productId?: string }) {
+   console.log(productId);
+   const product = await productModel.findOne({ id: Number(productId) });
+
+   return product;
+}
+
 // async function addProduct({ ...props }: any) {
 //    for (const [i, p] of props.body.entries()) {
 //       console.log(p, i + 1);
@@ -21,4 +28,5 @@ async function getProduct(): Promise<Product[]> {
 
 export default {
    getProduct,
+   getProductDetail,
 };
