@@ -6,8 +6,18 @@ async function getProduct(): Promise<Product[]> {
 }
 
 async function getProductDetail({ productId }: { productId?: string }) {
-   console.log(productId);
    const product = await productModel.findOne({ id: Number(productId) });
+
+   return product;
+}
+
+async function searchProduct({ keyword }: { keyword?: string }) {
+   console.log(123, keyword);
+   const product = await productModel.find({
+      name: {
+         $regex: keyword,
+      },
+   });
 
    return product;
 }
@@ -29,4 +39,5 @@ async function getProductDetail({ productId }: { productId?: string }) {
 export default {
    getProduct,
    getProductDetail,
+   searchProduct,
 };
