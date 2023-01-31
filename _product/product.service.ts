@@ -5,14 +5,13 @@ async function getProduct(): Promise<Product[]> {
    return product.map((p) => p);
 }
 
-async function getProductDetail({ productId }: { productId?: string }) {
-   const product = await productModel.findOne({ id: Number(productId) });
+async function getProductDetail({ productId }: { productId?: number }) {
+   const product = await productModel.findOne({ id: productId });
 
    return product;
 }
 
 async function searchProduct({ keyword }: { keyword?: string }) {
-   console.log(123, keyword);
    const product = await productModel.find({
       name: {
          $regex: keyword,

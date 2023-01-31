@@ -18,14 +18,18 @@ function getProduct(req: Request, res: Response, next: NextFunction) {
 }
 
 function getProductDetail(req: Request, res: Response, next: NextFunction) {
-   productService
-      .getProductDetail(req.params)
-      .then((product) => res.json(product))
-      .catch(next);
+   const { productId: id } = req.params;
+   const productId = Number(id);
+
+   if (productId) {
+      productService
+         .getProductDetail({ productId })
+         .then((product) => res.json(product))
+         .catch(next);
+   }
 }
 
 function searchProduct(req: Request, res: Response, next: NextFunction) {
-   console.log(req);
    productService
       .searchProduct(req.params)
       .then((product) => res.json(product))
