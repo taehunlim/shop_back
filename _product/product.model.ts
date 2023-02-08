@@ -104,7 +104,7 @@ const schema = new Schema<Product>({
                   require: true,
                },
                stock: {
-                  type: String,
+                  type: Number,
                   require: true,
                },
             },
